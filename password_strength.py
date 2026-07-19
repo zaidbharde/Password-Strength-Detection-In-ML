@@ -2,6 +2,8 @@ import warnings
 warnings.simplefilter('ignore')
 
 import argparse
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -12,6 +14,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 
 STRENGTH_MAP = {0: 'Weak', 1: 'Medium', 2: 'Strong'}
+DATA_PATH = Path(__file__).resolve().parent / "data" / "Password Strength.csv"
 
 
 def character(inputs):
@@ -34,7 +37,7 @@ def parse_args():
 
 
 def train_model(model_name):
-    data = pd.read_csv(r"Password Strength.csv", on_bad_lines='skip')
+    data = pd.read_csv(DATA_PATH, on_bad_lines='skip')
     df = data.dropna()
 
     x = df['password']
