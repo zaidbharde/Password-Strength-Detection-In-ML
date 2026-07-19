@@ -67,7 +67,7 @@ def train_model(model_name):
 def predict_password(model, vec, password):
     password_vec = vec.transform(np.array([password]))
     prediction = model.predict(password_vec)[0]
-    print(f"Password Strength: {STRENGTH_MAP[prediction]} ({prediction})")
+    return prediction, STRENGTH_MAP[prediction]
 
 
 def main():
@@ -75,14 +75,16 @@ def main():
     model, vec = train_model(args.model)
 
     if args.password:
-        predict_password(model, vec, args.password)
+        prediction, label = predict_password(model, vec, args.password)
+        print(f"Password Strength: {label} ({prediction})")
         return
 
     while True:
         user_inp = input("\nEnter a password (or 'quit' to exit): ")
         if user_inp.lower() == 'quit':
             break
-        predict_password(model, vec, user_inp)
+        prediction, label = predict_password(model, vec, user_inp)
+        print(f"Password Strength: {label} ({prediction})")
 
 
 if __name__ == "__main__":

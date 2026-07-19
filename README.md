@@ -18,6 +18,14 @@ Passwords are converted to numerical features using character-level TF-IDF vecto
 | Gradient Boosting | ~91.3% |
 
 ## Usage
+Run the desktop GUI:
+```bash
+python password_strength_gui.py
+```
+
+The GUI trains the Logistic Regression model on startup, then lets you type a password and check its strength.
+
+Run from the command line:
 ```bash
 python password_strength.py
 ```
