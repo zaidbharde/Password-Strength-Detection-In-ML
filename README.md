@@ -81,11 +81,13 @@ A model that's *never* wrong is usually a model that's *cheating*. This dataset'
 
 ## 🚀 Usage
 
-**Desktop GUI:**
+**Desktop GUI:
 ```bash
 python password_strength_gui.py
 ```
 Trains Logistic Regression on launch, then checks strength live as you type.
+
+The GUI loads the saved XGBoost model from `models/` when available and falls back to Logistic Regression training if the artifact is missing. It includes a modern dashboard, password generator, animated score meter, entropy/crack-time estimates, character breakdown, and actionable feedback.
 
 **CLI:**
 ```bash
